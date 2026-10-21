@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct VotingBoothApp: App {
+    @State private var dependencyContainer: DependencyContainer()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RepresentativeListView().environment(container)
         }
     }
 }

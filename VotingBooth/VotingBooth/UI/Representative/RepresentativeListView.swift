@@ -12,7 +12,7 @@ struct RepresentativeListView: View {
     var body: some View {
         NavigationStack {
             List(viewModel.representatives) {
-                Text($0.name)
+                Text("\($0.firstName) \($0.lastName)")
             }
             .navigationTitle("Representatives")
             .task { await viewModel.load() }

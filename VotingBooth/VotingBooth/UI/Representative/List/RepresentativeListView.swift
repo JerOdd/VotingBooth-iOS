@@ -14,9 +14,14 @@ struct RepresentativeListView: View {
             List(viewModel.filteredRepresentatives) {
                 RepresentativeRow(representative: $0)
             }
-            .navigationTitle("Representatives")
+            .navigationTitle(.representativesTitle)
             .searchable(text: $viewModel.searchText)
             .task { await viewModel.load() }
         }
     }
+}
+
+#Preview {
+    RepresentativeListView()
+        .environment(\.locale, Locale(identifier: "fr"))
 }

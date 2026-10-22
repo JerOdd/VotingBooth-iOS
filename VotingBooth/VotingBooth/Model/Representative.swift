@@ -19,15 +19,6 @@ nonisolated struct Representative: Identifiable, Decodable {
     let groupShortName: String
     let groupColor: String
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case photoUrl = "photo_url"
-        case groupShortName = "group_short_name"
-        case groupColor = "group_color"
-    }
-    
     var fullName: String {
         var components = PersonNameComponents()
         components.givenName = firstName

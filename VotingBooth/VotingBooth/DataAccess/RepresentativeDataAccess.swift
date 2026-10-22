@@ -12,12 +12,11 @@ protocol RepresentativeDataAccessProtocol {
 }
 
 actor RepresentativeDataAccess: RepresentativeDataAccessProtocol {
+    
+    @Inject private var apiClient: APIClientProtocol
+    
     func fetchRepresentatives() async throws -> [Representative] {
-        guard let url = URL(string: "http://localhost:8085/representatives") else {
-            return []
-        }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let response = try JSONDecoder().decode(RepresentativesResponse.self, from: data)
+        let response: RepresentativesResponse = try await apiClient.get("representatives")
         return response.representatives
     }
 }

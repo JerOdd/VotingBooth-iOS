@@ -12,6 +12,7 @@ struct VotingBoothApp: App {
     
     init() {
         let dc = DependencyContainer.shared
+        dc.register(APIClientProtocol.self) { APIClient() }
         dc.register(RepresentativeDataAccessProtocol.self) { RepresentativeDataAccess() }
         dc.register(RepresentativeServiceProtocol.self) { RepresentativeService() }
     }

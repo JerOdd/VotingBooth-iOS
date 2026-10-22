@@ -9,11 +9,15 @@ import SwiftUI
 
 @main
 struct VotingBoothApp: App {
-    @State private var dependencyContainer: DependencyContainer()
+    
+    init() {
+        let dc = DependencyContainer.shared
+        dc.register(RepresentativeServiceProtocol.self) { RepresentativeService() }
+    }
     
     var body: some Scene {
         WindowGroup {
-            RepresentativeListView().environment(container)
+            RepresentativeListView()
         }
     }
 }

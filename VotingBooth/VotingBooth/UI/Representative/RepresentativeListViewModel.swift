@@ -7,8 +7,13 @@
 
 import Observation
 
-@MainActor
 @Observable
-class RepresentativeListViewModel {
+final class RepresentativeListViewModel {
+    var representatives: [Representative] = []
+    @ObservationIgnored @Inject private var representativeService: RepresentativeServiceProtocol
     
+    @MainActor
+    func load() async {
+        representatives = (try? await representativeService.fetchRepresentatives()) ?? []
+    }
 }

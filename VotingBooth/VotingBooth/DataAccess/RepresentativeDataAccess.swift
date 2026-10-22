@@ -11,6 +11,6 @@ protocol RepresentativeDataAccessProtocol {
 
 actor RepresentativeDataAccess: RepresentativeDataAccessProtocol {
     func fetchRepresentatives() async throws -> [Representative] {
-        
+        return []
     }
 }

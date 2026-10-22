@@ -11,10 +11,10 @@ protocol RepresentativeServiceProtocol {
 
 class RepresentativeService: RepresentativeServiceProtocol {
     
-    private let representativeDataAccess: RepresentativeDataAccessProtocol
+    @Inject private var representativeDataAccess: RepresentativeDataAccessProtocol
     
-    init(representativeDataAccess: RepresentativeDataAccessProtocol) {
-        self.representativeDataAccess = representativeDataAccess
+    func fetchRepresentatives() async throws -> [Representative] {
+        return try await representativeDataAccess.fetchRepresentatives()
     }
     
 }

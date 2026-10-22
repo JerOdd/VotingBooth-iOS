@@ -19,7 +19,11 @@ struct VotingBoothApp: App {
     
     var body: some Scene {
         WindowGroup {
-            RepresentativeListView()
+            TabView {
+                Tab(.representativesTitle, systemImage: "person.3") {
+                    RepresentativeListView()
+                }
+            }
         }
     }
 }

@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct VotingBoothApp: App {
+    
+    init() {
+        let dc = DependencyContainer.shared
+        dc.register(APIClientProtocol.self) { APIClient() }
+        dc.register(RepresentativeDataAccessProtocol.self) { RepresentativeDataAccess() }
+        dc.register(RepresentativeServiceProtocol.self) { RepresentativeService() }
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                Tab(.representativesTitle, systemImage: "person.3") {
+                    RepresentativeListView()
+                }
+            }
         }
     }
 }

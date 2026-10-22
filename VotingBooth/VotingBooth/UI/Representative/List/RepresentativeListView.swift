@@ -11,10 +11,11 @@ struct RepresentativeListView: View {
     
     var body: some View {
         NavigationStack {
-            List(viewModel.representatives) {
+            List(viewModel.filteredRepresentatives) {
                 RepresentativeRow(representative: $0)
             }
             .navigationTitle("Representatives")
+            .searchable(text: $viewModel.searchText)
             .task { await viewModel.load() }
         }
     }

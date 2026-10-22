@@ -15,7 +15,7 @@ protocol APIClientProtocol: Sendable {
 
 class APIClient: APIClientProtocol {
     
-    private let baseUrl: URL = URL(string: "http://localhost:8085")!
+    private let baseUrl: URL = URL(string: "http://localhost:8081/mobile/v1")!
     
     private let decoder: JSONDecoder = {
         let d = JSONDecoder()

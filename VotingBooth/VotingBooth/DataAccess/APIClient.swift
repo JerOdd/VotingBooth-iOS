@@ -25,7 +25,7 @@ class APIClient: APIClientProtocol {
     }()
     
     func get<T: Decodable>(_ path: String) async throws -> T {
-        let (data, _) = try await URLSession.shared.data(from: baseUrl.appending(path: path))
+        let (data, response) = try await URLSession.shared.data(from: baseUrl.appending(path: path))
         return try decoder.decode(T.self, from: data)
     }
     

@@ -13,11 +13,16 @@ struct LawListView: View {
     
     var body: some View {
         NavigationStack {
-            List(viewModel.laws) {
-                LawRow(law: $0)
+            List(viewModel.laws) { law in
+                NavigationLink(value: law) {
+                    LawRow(law: law)
+                }
             }
             .navigationTitle(.lawsTitle)
             .task { await viewModel.load() }
+            .navigationDestination(for: Law.self) { law in
+                LawDetailView(law: law)
+            }
         }
     }
 }

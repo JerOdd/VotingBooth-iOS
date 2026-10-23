@@ -11,7 +11,7 @@ struct LawsResponse: Decodable {
     
 }
 
-struct Law: Identifiable, Decodable {
+struct Law: Identifiable, Decodable, Hashable {
     let id: String
     let title: String
 }

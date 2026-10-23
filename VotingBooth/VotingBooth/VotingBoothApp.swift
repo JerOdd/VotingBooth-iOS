@@ -22,7 +22,7 @@ struct VotingBoothApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                Tab(.lawsTitle, systemImage: "person.3") {
+                Tab(.lawsTitle, systemImage: "scroll") {
                     LawListView()
                 }
                 
